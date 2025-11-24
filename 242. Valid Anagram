@@ -1,0 +1,70 @@
+242. Valid Anagram
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+ 
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+
+Output: true
+
+Example 2:
+
+Input: s = "rat", t = "car"
+
+Output: false
+
+ 
+
+Constraints:
+
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
+
+
+
+
+
+Solutions:
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # approach 1
+        # list1 = list(s)
+        # list2 = list(t)
+
+        # list1.sort()
+        # list2.sort()
+
+        # list3 = str(list1)
+        # list4 = str(list2)
+
+        # if list3 == list4:
+        #     return True
+        # else:
+        #     return False
+
+
+        # approach 2
+        if len(s) != len(t):
+            return False
+
+        freq = {}
+        for i in s:
+            if i not in freq:
+                freq[i] = 1
+            else:
+                freq[i] += 1
+
+        for i in t:
+            if i not in freq:
+                return False
+            else:
+                freq[i] -= 1
+
+        for i in freq.values():
+            if i != 0:
+                return False
+
+        return True
